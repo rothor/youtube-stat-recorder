@@ -1,0 +1,8 @@
+CREATE TABLE YoutubeRecord (
+	Id INTEGER PRIMARY KEY ASC,
+	ChannelId INT,
+	TimeOf TEXT NOT NULL,
+	Subscribers INT,
+	TotalViews INT,
+	FOREIGN KEY(ChannelId) REFERENCES YoutubeChannel(Id)
+);
