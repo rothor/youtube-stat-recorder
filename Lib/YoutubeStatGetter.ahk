@@ -11,25 +11,13 @@ class YoutubeStatGetter
 
 static logger := new Logger("download logs.txt")
 
-/* Function: recordYoutubeStats
+/* Function: recordStats
  * Purpose:
- *   This function performs the simple task of iterating on a list of channel ids,
- *   calling the 'recordUserStats' function for each one, keeping
- *   track of how many of these calls fail (which it returns), and logging errors.
+ *   Records the YouTube stats of a list of channels, and logs any errors.
  * Input:
- *   - usernameList: Object - An array of youtube channel ids.
+ *   - channelList: Object - An array of youtube channel ids.
  * Output:
- *   - Return value: int - Returns the number of queries that failed
- *    (returns 0 on total success).
- * Notes:
- *   - You can find another youtube channel's id by clicking on the 'about' tab on a
- *     channel's page and looking at the url. Considering that these functions don't
- *     actually use the Youtube API, there is probably a better way to do this, but I'm
- *     too lazy to learn the API right now.
- *   - The reason why I decided to use a channel's id rather than its name is because
- *     I couldn't find a way to take a youtube username or a channel name and look up
- *     its channel id. To my knowledge, it may be possible for multiple channels (and also
- *     users) to have the same name, which would make this basically impossible.
+ *   - nothing.
  * Last updated: Mar 10, 2019
  * Author: Robert Thorsberg
  */
@@ -52,12 +40,11 @@ recordStats(channelList)
 	return errorCount
 }
 
-/* Function: recordUserYoutubeStats
+/* Function: recordUserStats
  * Purpose:
- *   This function takes a youtube channel id as input, and downloads its
- *   stats and adds it to the database.
+ *   Downloads a channel's stats and adds a new record to the database.
  * Input:
- *   - user: string - A youtube channel id.
+ *   - channelId: string - A youtube channel id.
  * Output:
  *   - Return value: ErrorResponse - Contains info on whether the funcion succeeded.
  * Last updated: July 1, 2019
@@ -77,17 +64,15 @@ recordUserStats(channelId)
 	return new ErrorResponse(true)
 }
 
-/* Function: downloadAndParseYoutubeUserStats
+/* Function: downloadAndParseUserStats
  * Purpose:
- *   This function takes a youtube channel id as input, and returns an Object
- *	 containing its stats (like views and subscribers, etc.).
+ *   Downloads and returns channel's stats.
  * Input:
- *   - user: string - A youtube channel id.
- *   - stats: any - Used for returning values.
+ *   - channelId: string - A youtube channel id.
  * Output:
  *   - Return value: ErrorResponse - Contains info on whether the funcion succeeded.
- *   - stats: Object - On success, will contain the youtube channel's stats. They
- *     are: channel name (which can be changed), subscribers, views
+ *   - r_stats: Object - On success, will contain the youtube channel's stats. They
+ *     are: channelName, subscribers, views
  * Last updated: Mar 10, 2019
  * Author: Robert Thorsberg
  */

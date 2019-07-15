@@ -2,6 +2,20 @@
 #include <Logger>
 
 
+/* Function: addRecordToDatabase
+ * Purpose:
+ *   Adds a new record to the database.
+ * Input:
+ *   - channelIdStr: string - the channel's id string
+ *   - timeOf: string - timestamp
+ *   - subscribers: int - the subscriber count
+ *   - totalViews: int - the total view count
+ *   - name: string - the channel's name
+ * Output:
+ *   - Return value: nothing
+ * Last updated: Jul 1, 2019
+ * Author: Robert Thorsberg
+ */
 addRecordToDatabase(channelIdStr, timeOf, subscribers := "", totalViews := "", name := "")
 {
 	paramStr := "channelIdStr=" channelIdStr ", timeOf=" timeOf ", subscribers=" subscribers ", totalViews=" totalViews ", name=" name
